@@ -1,5 +1,6 @@
 package com.blackboxdynamics.customer.servicesImp
 
+import com.blackboxdynamics.amqp.MessageProducer
 import com.blackboxdynamics.clients.fraud.FraudClient
 import com.blackboxdynamics.customer.entities.Customer
 import com.blackboxdynamics.customer.repositories.CustomerRepository
@@ -10,7 +11,8 @@ import org.springframework.web.client.RestTemplate
 
 @Service
 class CustomerServiceImp(val repository: CustomerRepository,
-                         val fraudClient: FraudClient
+                         val fraudClient: FraudClient,
+                         val producer:MessageProducer
 ) : CustomerService {
 
     override fun registerCustomer(customer:Customer):Customer {
@@ -20,6 +22,12 @@ class CustomerServiceImp(val repository: CustomerRepository,
         if(response) {
             throw LogicException("Fraud Client")
         }
+
+        producer.publish(
+            "Hello new costumer $customer",
+            "internal.exchange",
+            "internal.notification.routing-key"
+        )
         return customer
     }
 }
