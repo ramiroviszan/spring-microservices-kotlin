@@ -1,11 +1,7 @@
-package com.blackboxdynamics.notification.config
+package com.blackboxdynamics.notification
 
-import com.blackboxdynamics.amqp.MessageProducer
-import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
-import org.springframework.context.annotation.Bean
-import org.springframework.stereotype.Component
 
 @SpringBootApplication(
     scanBasePackages = [

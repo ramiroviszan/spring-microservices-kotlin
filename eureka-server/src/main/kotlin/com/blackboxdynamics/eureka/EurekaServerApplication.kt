@@ -1,4 +1,4 @@
-package com.blackboxdynamics
+package com.blackboxdynamics.eureka
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
