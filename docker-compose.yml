@@ -3,7 +3,7 @@ services:
     container_name: postgres
     image: postgres
     environment:
-      POSTGRES_USER: amigoscode
+      POSTGRES_USER: blackboxdynamics
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
     volumes:
@@ -38,7 +38,7 @@ services:
       - spring
 
   rabbitmq:
-    image: rabbitmq:3.9.22-management-alpine
+    image: rabbitmq:3.10.7-management-alpine
     container_name: rabbitmq
     ports:
       - "5672:5672" #host:container - port for applications to connect to
